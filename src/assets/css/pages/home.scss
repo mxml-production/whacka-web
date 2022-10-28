@@ -1,0 +1,137 @@
+.home {
+    .home__container {
+        width: 90%;
+        max-width: 1200px;
+ 
+        margin: 0 auto;
+        padding: 100px 0;
+    }
+
+    .home__logo {
+        display: flex;
+        flex-direction: column;
+        align-items: center;                                                                
+
+        margin-bottom: 50px;
+
+        img {
+            width: 200px;
+            height: 200px;
+
+            object-fit: cover;
+
+            border-radius: 50%;
+
+            @media screen and (max-width: 768px) {
+                width: 150px;
+                height: 150px;
+            }
+    
+            @media screen and (max-width: 480px) {
+                width: 100px;
+                height: 100px;
+            }
+        }
+    }
+
+    .home__info {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        margin-bottom: 50px;
+    }
+
+    .home__title {
+        margin-bottom: 25px;
+
+        text-align: center;
+        text-transform: uppercase;
+
+        font-size: 64px;
+        font-weight: 700;
+
+        @media screen and (max-width: 768px) {
+            font-size: 48px;
+        }
+
+        @media screen and (max-width: 480px) {
+            font-size: 32px;
+        }
+    }
+
+    .home__text {
+        max-width: 400px;
+
+        margin-bottom: 25px;
+
+        text-align: center;
+        text-transform: uppercase;
+
+        font-size: 18px;
+        font-weight: 400;
+
+        @media screen and (max-width: 768px) {
+            font-size: 16px;
+        }
+
+        @media screen and (max-width: 480px) {
+            font-size: 14px;
+        }
+    }
+
+    .home__button {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+
+        padding: 15px 25px;
+
+        background-color: #141414;
+
+        border-radius: 15px;
+
+        cursor: pointer;
+
+        transition: transform 0.8s ease-in-out;
+
+        &:hover {
+            transform: scale(1.05);
+        }
+    }
+
+    .home__images {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 50px;
+    }
+
+    .home__image {
+        width: 100%;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        img {
+            max-width: 100%;
+
+            border-radius: 10px;
+
+            box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
+        }
+    }
+
+    .home__footer {
+        margin-top: 100px;
+
+        p {
+            text-align: center;
+            text-transform: uppercase;
+
+            font-size: 14px;
+            font-weight: 400;
+        }
+    }
+}

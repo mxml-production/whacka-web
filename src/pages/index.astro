@@ -1,0 +1,44 @@
+---
+import BaseLayout from "../Layouts/baseLayout.astro";
+
+import LogoImage from "../assets/img/logo.jpg";
+import LeaderboardImage from "../assets/img/leaderboard.png";
+import Rank1Image from "../assets/img/rank1.png";
+import Rank2Image from "../assets/img/rank2.png";
+---
+<BaseLayout title="Home page">
+    <div class="home">
+        <div class="home__container">
+            <div class="home__logo">
+                <img src={LogoImage} alt="Whacka Bot">
+            </div>
+            <div class="home__info">
+                <h1 class="home__title">
+                    Whacka Bot
+                </h1>
+                <p class="home__text">
+                    UN bot qui crée un leaderboard dans votre serveur et vous laisse gérer l’attribution des points.
+                </p>
+                <a target="_blank" href="https://discord.com/api/oauth2/authorize?client_id=1023980451494379540&permissions=8&scope=applications.commands%20bot" class="home__button">
+                    Inviter le bot
+                </a>
+            </div>
+            <div class="home__images">
+                <div class="home__image">
+                    <img src={LeaderboardImage} alt="Leaderboard whacka bot">
+                </div>
+                <div class="home__image">
+                    <img src={Rank1Image} alt="Leaderboard whacka bot">
+                </div>
+                <div class="home__image">
+                    <img src={Rank2Image} alt="Leaderboard whacka bot">
+                </div>
+            </div>
+            <div class="home__footer">
+                <p class="home__footer-text">
+                    © 2022 Whacka Bot
+                </p>
+            </div>
+        </div>
+    </div>
+</BaseLayout>

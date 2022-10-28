@@ -1,0 +1,71 @@
+---
+import BaseLayout from "../../../Layouts/baseLayout.astro";
+
+const { slug, name } = Astro.params;
+
+const res = await fetch(`http://127.0.0.1:3000/api/${slug}`);
+
+if(res.status !== 200) {
+	return Astro.redirect('/404');
+}
+
+const data = await res.json();
+
+if(data.success === false) {
+	return Astro.redirect('/404');
+}
+
+const leaderboard = data.leaderboard;
+
+---
+<BaseLayout title="Leaderboard">
+	<div class="leaderboard">
+		<div class="leaderboard__container">
+			<h1 class="leaderboard__title">
+				Leaderboard
+			</h1>
+			<h1 class="leaderboard__subtitle">
+				{name}
+			</h1>
+			<div class="leaderboard__content">
+				{leaderboard.length > 0 ? leaderboard.map((item, i) => (
+					<div class="leaderboard__item">
+						<div class="leaderboard__image">
+							<img src={`https://cdn.discordapp.com/avatars/${item.id}/${item.avatar}.png`} alt={item.username}>
+						</div>
+						<div class="leaderboard__userinfo">
+							<h3 class="leaderboard__userinfo-title">
+								{item.username}
+							</h3>
+							<p class="leaderboard__userinfo-id">
+								{item.id}
+							</p>
+						</div>
+						<div class="leaderboard__rankinfo">
+							<div class="row">
+								<h4>
+									Rank
+								</h4>
+								<p>
+									#{i + 1}
+								</p>	
+							</div>	
+							<div class="row">
+								<h4>
+									Points
+								</h4>
+								<p>
+									{item.points}
+								</p>
+							</div>
+						</div>
+					</div>
+				)) : (
+					<p>
+						Il n'y a pas de membre dans le leaderboard de ce serveur.
+					</p>
+				)}
+			</div>
+		</div>
+	</div>
+</BaseLayout>
