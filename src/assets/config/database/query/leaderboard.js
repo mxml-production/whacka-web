@@ -1,7 +1,6 @@
 import DB from '../config/db';
 
 import Points from "../models/points";
-import User from "../models/user";
 import Url from "../models/url"; 
 
 const fetchUser = async id => {
@@ -26,13 +25,10 @@ const fetchUser = async id => {
 const leaderboard = async (slug) => {
     try {
         await DB();
-        // Get the guildId from the slug
+
         const url = await Url.findOne({ slug: slug });
-        
-        // If the url doesn't exist, return null
         if (!url) return null;
 
-        // Get the leaderboard
         const leaderboard = await Points.find({ guildId: url.guildId }).sort({ points: -1 }).populate('userId');
 
         const users = [];
@@ -48,8 +44,7 @@ const leaderboard = async (slug) => {
                 points: user.points
             });
         }
-
-        // Return the leaderboard
+        
         return users;
     } catch (error) {
         console.log(error);
