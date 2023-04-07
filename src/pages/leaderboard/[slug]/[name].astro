@@ -3,19 +3,24 @@ import BaseLayout from "../../../Layouts/baseLayout.astro";
 
 const { slug, name } = Astro.params;
 
-const res = await fetch(`http://127.0.0.1:3000/api/${slug}`);
+let leaderboard;
 
-if(res.status !== 200) {
+try {
+	const res = await fetch(`http://localhost:3000/api/leaderboard/${slug}`);
+
+	if(res.status !== 200) return Astro.redirect('/404');
+
+	const data = await res.json();
+
+	if(data.success === false) {
+		return Astro.redirect('/404');
+	}
+
+	leaderboard = data.leaderboard;
+} catch(e) {
+	console.log(e);
 	return Astro.redirect('/404');
 }
-
-const data = await res.json();
-
-if(data.success === false) {
-	return Astro.redirect('/404');
-}
-
-const leaderboard = data.leaderboard;
 
 ---
 <BaseLayout title="Leaderboard">

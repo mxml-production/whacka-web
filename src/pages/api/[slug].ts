@@ -1,6 +1,10 @@
+import type { APIRoute } from "astro";
+
 import leaderboardQuery from "../../assets/config/database/query/leaderboard";
 
-export const get = async ({ params, request }) => {
+export const get: APIRoute = async ({ params, request }) => {
+    console.log('Slug: ', params.slug);
+
     const { slug } = params;
 
     const leaderboard = await leaderboardQuery(slug);
